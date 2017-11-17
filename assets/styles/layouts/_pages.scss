@@ -1,0 +1,18 @@
+// Pages
+
+.copter--page-title {
+  @include page-title;
+}
+
+.copter--single {
+  padding: 1.5rem 0 1rem;
+  font-size: 0.9rem;
+  .gallery {
+    img {
+      width: 100%;
+      // max-width: 100%;
+      height: auto;
+    }
+  }
+  @include content-styles;
+}

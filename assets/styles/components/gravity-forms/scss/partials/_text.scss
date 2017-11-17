@@ -1,0 +1,7 @@
+.gform_wrapper {
+	.ginput_container {
+		input[type="text"] {
+			@extend .form-control;
+		}
+	}
+}

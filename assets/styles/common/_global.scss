@@ -1,0 +1,70 @@
+body, html {
+  font-size: 20px;
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.copter--page {
+  background: #fff;
+  position: relative;
+  left: 0;
+  transition: left 0.25s ease-in-out;
+  max-width: 100%;
+  > * {
+    transition: opacity 0.25s ease-in-out;
+  }
+}
+
+.copter--column {
+  @include make-col-ready();
+  &__primary {
+    margin-left: auto;
+    margin-right: auto;
+    @include media-breakpoint-down(xl) {
+      @include make-col(8);
+    }
+    @include media-breakpoint-down(lg) {
+      @include make-col(9);
+    }
+    @include media-breakpoint-down(md) {
+      @include make-col(11);
+    }
+    @include media-breakpoint-down(md) {
+      @include make-col(12);
+    }
+  }
+}
+
+.btn {
+  border-width: 2px;
+  font-size: 1.3rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  position: relative;
+  transition: all 0.35s ease-in-out;
+  &.btn-sm {
+    font-size: 1.15rem;
+    padding: $input-btn-padding-y $input-btn-padding-x;
+  }
+  &:active {
+    top: 2px;
+    left: 2px;
+  }
+}
+
+.copter--panel {
+  position: relative;
+  overflow: hidden;
+  &--bg {
+    position: absolute;
+    top: -5%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-size: cover;
+    opacity: 1;
+    background-position: center center;
+  }
+}
+

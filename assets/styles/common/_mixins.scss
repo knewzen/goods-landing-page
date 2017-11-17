@@ -1,0 +1,297 @@
+
+// $grid-breakpoints: (
+//   xs: 0,
+//   sm: 576px,
+//   md: 768px,
+//   lg: 992px,
+//   xl: 1200px
+// );
+
+/*
+ * Mixin to compensate for the height of the admin bar
+ * for fixed position elements in WordPress themes
+ */
+@mixin admin-sticky-fix( $offset: 0 ) {
+  $narrow-offset: 46px;
+  $wide-offset: 32px;
+  @if $offset != 0 and type-of($offset) == 'number' {
+    $narrow-offset: $narrow-offset + $offset;
+    $wide-offset: $wide-offset + $offset;
+  }
+  .admin-bar & {
+    top: $narrow-offset;
+    @media screen and (min-width: 783px) {
+      top: $wide-offset;
+    }
+  }
+  offset-type: type-of($offset);
+}
+#wpadminbar {
+  position: fixed !important;
+}
+
+@mixin responsive-bg($map) {
+  // build out mixin for responsive background
+  // images using grid breakpoints and the "each"
+  // scss loop thingy
+}
+
+@mixin panel-title($color: $black) {
+  color: $color;
+  text-transform: uppercase;
+  text-align: center;
+  //white-space: nowrap;
+  margin-bottom: 1.5rem;
+  small {
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: 0.11em;
+    display: block;
+    line-height: 1.4;
+    @include media-breakpoint-up(md) {
+      font-size: 1.15rem * 1.2;
+    }
+  }
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  margin-bottom: 0.25rem;
+  line-height: 1.1428571429;
+  @include media-breakpoint-up(sm) {
+    font-size: 1.75rem * 1.35;
+  }
+}
+
+@mixin panel-description($color: $black) {
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.3rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: $color;
+  a {
+    text-decoration: underline;
+  }
+}
+
+@mixin panel-header($color: $black) {
+  &__title {
+    @include panel-title($color);
+  }
+  &__description {
+    @include panel-description($color);
+  }
+}
+
+@mixin box-link-title {
+  > a {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    > img {
+      position: relative;
+      // left: 50%;
+      // transform: translateX(-50%);
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  &__title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.7);
+    text-align: center;
+    // Style for "TRAINING"
+    color: #ffffff;
+    font-weight: 500;
+    text-transform: uppercase;
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0;
+      padding-top: 1rem;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      @include media-breakpoint-up(lg) {
+        font-size: 1.3rem;
+      }
+    }
+    p {
+      font-size: 0.65rem;
+      border-bottom: double 3px #fff;
+      display: inline-block;
+    }
+  }
+}
+
+
+
+@mixin read-more() {
+  &__read_more {
+    // Style for "READ MORE"
+    text-align: center;
+    margin: 0.5rem 0 2rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    border-bottom: solid 1px $gray-lightest;
+    a, span {
+      color: inherit;
+      vertical-align: middle;
+    }
+    @include media-breakpoint-up(lg) {
+      border-bottom: none;
+    }
+  }
+}
+
+@mixin image() {
+  @include clearfix;
+  &__image {
+    img {
+      width: 100%;
+      height: auto;
+      margin: 0 auto 0.75rem;
+      @include media-breakpoint-up(lg) {
+        width: 40%;
+        float: left;
+        margin-right: 2rem;
+        margin-top: 0.25rem;
+      }
+    }
+  }
+}
+
+@mixin page-title {
+  background-color: #000;
+  // @include img-retina('../images/bg-schedule.jpg','../images/bg-schedule@2x.jpg', '', '');
+  background-size: cover;
+  background-position: center top;
+  &__content {
+    padding-top: 6rem;
+    min-height: 375px;
+    @extend .align-items-end;
+    @include media-breakpoint-up(md) {
+      min-height: 0;
+    }
+  }
+  h1 {
+    color: #fff;
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    @include media-breakpoint-up(sm) {
+      font-size: 3.2rem;
+    }
+    @include media-breakpoint-up(lg) {
+      font-size: 3.8rem;
+    }
+  }
+  @include media-breakpoint-up(md) {
+    background: #000;
+    .copter--panel--bg {
+      display: none;
+    }
+  }
+}
+
+@mixin responsive-font-size($size: 110%) {
+  font-size: $size;
+  @include media-breakpoint-down(lg) {
+    font-size: $size - 10%;
+  }
+  @include media-breakpoint-down(md) {
+    font-size: $size - 15%;
+  }
+  @include media-breakpoint-down(sm) {
+    font-size: $size - 20%;
+  }
+  @include media-breakpoint-down(xs) {
+    font-size: $size - 25%;
+  }
+}
+
+@mixin content-styles() {
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.5em;
+    line-height: 1.5;
+  }
+  h1 { @include responsive-font-size(185%) }
+  h2 { @include responsive-font-size(170%) }
+  h3 { @include responsive-font-size(155%) }
+  h4 { @include responsive-font-size(140%) }
+  h5 { @include responsive-font-size(125%) }
+  h6 { @include responsive-font-size(110%) }
+  p {
+    margin-bottom: 1.5em;
+    line-height: 1.7;
+    @include responsive-font-size(110%);
+  }
+  ul {
+    padding-left: 1.5em;
+    line-height: 2;
+    @include responsive-font-size(110%);
+    margin-top: 1em;
+    margin-bottom: 1em;
+    li {
+      position: relative;
+      margin-top: 0.5em;
+      // &::before {
+      //   content: '';
+      //   position: absolute;
+      //   left: -1em;
+      //   top: calc(50% - 0.125em);
+      //   display: block;
+      //   width: 0.35rem;
+      //   height: 0.35rem;
+      //   background-color: theme-color("primary");
+      // }
+    }
+  }
+  ol {
+    padding-left: 1.5em;
+    line-height: 2;
+    @include responsive-font-size(110%);
+    margin-top: 1em;
+    margin-bottom: 1em;
+    li {
+      margin-top: 0.5em;
+    }
+  }
+  blockquote {
+    padding: 0 1rem;
+    margin-top: 1.5em;
+    border-left: solid 5px rgba(theme-color("primary"), 0.5);
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    align-self: center;
+    @include media-breakpoint-up(sm) {
+      &.alignleft,
+      &.alignright {
+        max-width: 50%;
+      }
+    }
+  }
+  .wp-caption.aligncenter {
+    margin-top: 1.5em;
+    @include media-breakpoint-up(lg) {
+      width: calc(100% + 200px);
+      margin-left: -100px;
+      margin-top: 1.5em;
+      img,
+      .wp-caption-text {
+        width: calc(100% + 200px);
+        max-width: calc(100% + 200px);
+      }
+      img {
+        margin: 0;
+      }
+    }
+  }
+}

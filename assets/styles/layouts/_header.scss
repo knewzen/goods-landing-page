@@ -1,0 +1,41 @@
+.copter--header {
+  background: #eee;
+  transition: left 0.25s ease-in-out;
+  @include media-breakpoint-up(lg) {
+    background: #eee;
+    .copter--hamburger {
+      display: none;
+    }
+  }
+  &__logo {
+    text-align: center;
+    padding: 0.7rem 0;
+    @include media-breakpoint-up(lg) {
+      text-align: left;
+    }
+  }
+  &__button {
+    position: absolute;
+    pointer-events: auto;
+    z-index: 100;
+    &:focus {
+      outline: none;
+    }
+  }
+  .hamburger--squeeze {
+    // .hamburger-inner {
+    //   width: 20px;
+    //   // transition: all 0.15s linear;
+    // }
+    // &.is-active {
+    //   .hamburger-inner {
+    //     width: 30px;
+    //     &,
+    //     &::before,
+    //     &::after {
+    //       background-color: $black;
+    //     }
+    //   }
+    // }
+  }
+}

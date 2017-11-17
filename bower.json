@@ -1,0 +1,27 @@
+{
+  "name": "sage",
+  "homepage": "https://roots.io/sage/",
+  "authors": [
+    "Ben Word <ben@benword.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "git://github.com/twbs/bootstrap.git#v4.0.0-beta",
+    "popper.js": "^1.12.3",
+    "font-awesome": "fontawesome#^4.7.0",
+    "rellax": "*",
+    "css-hamburgers": "^0.9.1",
+    "swiper": "^3.4.2",
+    "fitvids": "^1.2.0",
+    "instafeed.js": "^1.4.1"
+  },
+  "overrides": {
+    "font-awesome": {
+      "main": [
+        "./scss/font-awesome.scss",
+        "./fonts/*"
+      ]
+    }
+  }
+}
